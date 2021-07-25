@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+	<title>test</title>
+
+	<style>
+		ul.pub {line-height: 20px;}
+		ul.pub li {margin-bottom: 10px;}
+		ol.multi-column {float: left; width: 100%; line-height: 10px;}
+		ol.multi-column li {float: left; width: 50%; margin-bottom: 10px;}
+
+		.container {
+			display: flex;
+			justify-content: center;
+		}
+
+		.radiobutton {
+			display: none;
+		}
+		label {
+			background-color: transparent;
+			padding: 10px 40px;
+			border-radius: 5px;
+		}
+
+		#sendButton {
+			background-color: #1e83ff;
+			border-radius: 5px;
+			border: none;
+			outline: none;
+			font-size:"4";
+			color: white;
+		}
+		#sendButton:hover {
+			background-color: #0f67d2;
+			color: white;
+		}
+		#sendButton:disabled {
+			background-color: rgba(20,20,20,0.1);
+			color: rgba(20,20,20,0.5);
+		}
+
+		.radioQuestion {
+			display: none;
+		}
+		.labelQuestion {
+			background-color: #b2ceff;
+			padding: 10px 20px;
+			border-radius: 5px;
+		}
+		.radioQuestion:checked + .labelQuestion {
+			background-color: #ff9372;
+		}
+
+	</style>
+
+</head>
+
+<body>
+
+	<!-- HEADER -->
+	<div id="header_wrap" class="outer" style="height: 100px;">
+		<header class="inner">
+			<h2><font color="#ffffff">AI作曲家のメロディー聴き比べ（第1シーズン 第1世代）</font></h2>
+		</header>
+	</div>
+
+	<!-- MAIN CONTENT -->
+
+	<div id="main_content_wrap" class="outer">
+	<section id="main_content" class="inner">
+
+	<div style="margin-left:auto; margin-right:auto; width:95%; text-align:center; padding: 20px 20px 20px 20px;">
+
+		<h3 id="main_sentence">はじめに、次の質問に答えてください</h3>
+
+		<div style="height:10px;"></div>
+
+		<div class="container" style="margin-left:auto; margin-right:auto; width:100%; text-align:center; padding: 20px 0px;">
+
+			<div id="boxA" class="radiobox" style="width:40%; background-color:#eeeeee; text-align:center; justify-content: center;" hidden>
+				<h3>A</h3>
+				<img id="faceA" src="Mugao.png" height="160" alt="Picture"/>
+				<div></div>
+				<div><audio id="Audio1A" controls preload="metadata" src="">エラー</audio><br></div>
+				<div style="height:10px;"></div>
+				<input id="radio1" class="radiobutton" name="selector" type="radio" value="A"/>
+				<label id="label1" for="radio1">Aの方が良い</label>
+				<div style="height:20px;"></div>
+			</div>
+
+			<div id="boxSpacer" style="width:5%;" hidden></div>
+
+			<div id="boxB" class="radiobox" style="width:40%; background-color:#eeeeee; text-align:center; justify-content: center;" hidden>
+				<h3>B</h3>
+				<img id="faceB" src="Mugao.png" height="160" alt="Picture"/>
+				<div></div>
+				<div><audio id="Audio1B" controls preload="metadata" src="">エラー</audio><br></div>
+				<div style="height:10px;"></div>
+				<input id="radio2" class="radiobutton" name="selector" type="radio" value="B"/>
+				<label id="label2" for="radio2">Bの方が良い</label>
+				<div style="height:20px;"></div>
+			</div>
+
+
+			<div id="questionnare">
+
+				<h4>あなたの年齢を教えてください</h4>
+				<input id="radioQAge1" class="radioQuestion" name="age" type="radio" value="0"/>
+				<label id="labelQAge1" class="labelQuestion" for="radioQAge1">10才未満</label>
+				<input id="radioQAge2" class="radioQuestion" name="age" type="radio" value="10"/>
+				<label id="labelQAge2" class="labelQuestion" for="radioQAge2">10代</label>
+				<input id="radioQAge3" class="radioQuestion" name="age" type="radio" value="20"/>
+				<label id="labelQAge3" class="labelQuestion" for="radioQAge3">20代</label>
+				<input id="radioQAge4" class="radioQuestion" name="age" type="radio" value="30"/>
+				<label id="labelQAge4" class="labelQuestion" for="radioQAge4">30代</label>
+				<input id="radioQAge5" class="radioQuestion" name="age" type="radio" value="40"/>
+				<label id="labelQAge5" class="labelQuestion" for="radioQAge5">40代</label>
+				<input id="radioQAge6" class="radioQuestion" name="age" type="radio" value="50"/>
+				<label id="labelQAge6" class="labelQuestion" for="radioQAge6">50代</label>
+				<input id="radioQAge7" class="radioQuestion" name="age" type="radio" value="60"/>
+				<label id="labelQAge7" class="labelQuestion" for="radioQAge7">60代</label>
+				<input id="radioQAge8" class="radioQuestion" name="age" type="radio" value="70"/>
+				<label id="labelQAge8" class="labelQuestion" for="radioQAge8">70代</label>
+				<input id="radioQAge9" class="radioQuestion" name="age" type="radio" value="80"/>
+				<label id="labelQAge9" class="labelQuestion" for="radioQAge9">80代</label>
+				<input id="radioQAge10" class="radioQuestion" name="age" type="radio" value="90"/>
+				<label id="labelQAge10" class="labelQuestion" for="radioQAge10">90代以上</label>
+
+				<div style="height:20px;"></div>
+
+				<h4>一日に平均どれくらい音楽を聴きますか？</h4>
+				<input id="radioQListenTime1" class="radioQuestion" name="listenTime" type="radio" value="0"/>
+				<label id="labelQListenTime1" class="labelQuestion" for="radioQListenTime1">30分間未満</label>
+				<input id="radioQListenTime2" class="radioQuestion" name="listenTime" type="radio" value="1"/>
+				<label id="labelQListenTime2" class="labelQuestion" for="radioQListenTime2">30分間から1時間</label>
+				<input id="radioQListenTime3" class="radioQuestion" name="listenTime" type="radio" value="2"/>
+				<label id="labelQListenTime3" class="labelQuestion" for="radioQListenTime3">1時間から3時間</label>
+				<input id="radioQListenTime4" class="radioQuestion" name="listenTime" type="radio" value="3"/>
+				<label id="labe4QListenTime1" class="labelQuestion" for="radioQListenTime4">3時間以上</label>
+
+
+				<div style="height:20px;"></div>
+
+				<h4>趣味や仕事で音楽の演奏・作曲はしますか？</h4>
+				<input id="radioQMusicActivity1" class="radioQuestion" name="musicActivity" type="radio" value="0"/>
+				<label id="labelQMusicActivity1" class="labelQuestion" for="radioQMusicActivity1">演奏も作曲もしない</label>
+				<input id="radioQMusicActivity2" class="radioQuestion" name="musicActivity" type="radio" value="1"/>
+				<label id="labelQMusicActivity2" class="labelQuestion" for="radioQMusicActivity2">演奏をする</label>
+				<input id="radioQMusicActivity3" class="radioQuestion" name="musicActivity" type="radio" value="2"/>
+				<label id="labelQMusicActivity3" class="labelQuestion" for="radioQMusicActivity3">作曲をする</label>
+				<input id="radioQMusicActivity4" class="radioQuestion" name="musicActivity" type="radio" value="3"/>
+				<label id="labelQMusicActivity4" class="labelQuestion" for="radioQMusicActivity4">演奏も作曲もする</label>
+
+				<div style="height:20px;"></div>
+
+				<h4>作曲理論（和声法）を授業などで学んだことはありますか？</h4>
+				<input id="radioQHarmonyEducation1" class="radioQuestion" name="harmonyEducation" type="radio" value="0"/>
+				<label id="labelQHarmonyEducation1" class="labelQuestion" for="radioQHarmonyEducation1">ない</label>
+				<input id="radioQHarmonyEducation2" class="radioQuestion" name="harmonyEducation" type="radio" value="1"/>
+				<label id="labelQHarmonyEducation2" class="labelQuestion" for="radioQHarmonyEducation2">ある</label>
+
+			</div>
+
+
+		</div>
+
+		<div style="height:20px;"></div>
+
+<!-- 		<input id="sendButton" type="button" value="結果を送る" style="width:250px; height:50px;" disabled/> -->
+		<input id="sendButton" type="button" value="聴き比べに進む" style="width:250px; height:50px;" disabled/>
+
+
+		<div style="height:10px;"></div>
+
+		<div id="exit_sentence"></div>
+
+	</div>
+
+	<div style="height:20px;"></div>
+
+	<div id="memo" hidden></div>
+
+	</section>
+	</div>
+
+	<!-- FOOTER  -->
+	<div id="footer_wrap" class="outer">
+		<footer class="inner">
+		<p class="copyright">Maintained by Eita Nakamura　(最終更新: 2021年7月)</p>
+		</footer>
+	</div>
+
+	<script src="jquery.js"></script>
+	<script src="test.js"></script>
+
+</body>
+
+</html>
+
+
+
