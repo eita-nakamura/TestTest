@@ -32,6 +32,7 @@ document.getElementById('sendButton').addEventListener('click', function(event){
 		status="selected";
 		document.getElementById("main_sentence").innerHTML="AはAI作曲家「田中しおん」、Bは「横道かおる」の作った曲でした";
 		document.getElementById("sendButton").value="次の聴き比べに進む";
+		document.getElementById("labelSendButton").innerHTML="次の聴き比べに進む";
 
 		document.getElementById("faceA").src="F_13.png";
 		document.getElementById("faceB").src="M_207.png";
@@ -93,6 +94,7 @@ function SetupTest(){
 
 	document.getElementById("main_sentence").innerHTML="AとBのメロディーを聴いて、良いと思う方を選んでください";
 	document.getElementById("sendButton").value="結果を送る";
+	document.getElementById("labelSendButton").innerHTML="結果を送る";
 
 	document.getElementById("radio1").checked = false;
 	document.getElementById("radio2").checked = false;

@@ -26,23 +26,36 @@
 			background-color: transparent;
 			padding: 10px 40px;
 			border-radius: 5px;
+			cursor : pointer;
 		}
 
 		#sendButton {
+			display: none;
 			background-color: #1e83ff;
 			border-radius: 5px;
 			border: none;
 			outline: none;
-			font-size:"4";
+			font-size:15pt;
 			color: white;
+			cursor : pointer;
 		}
-		#sendButton:hover {
+
+		#labelSendButton {
+			background-color: #1e83ff;
+			border-radius: 5px;
+			border: none;
+			outline: none;
+			font-size:15pt;
+			color: white;
+			cursor : pointer;
+		}
+		#labelSendButton:hover {
 			background-color: #0f67d2;
-			color: white;
 		}
-		#sendButton:disabled {
+		input:disabled[type=button] + #labelSendButton {
 			background-color: rgba(20,20,20,0.1);
 			color: rgba(20,20,20,0.5);
+			cursor : default;
 		}
 
 		.radioQuestion {
@@ -64,9 +77,9 @@
 <body>
 
 	<!-- HEADER -->
-	<div id="header_wrap" class="outer" style="height: 100px;">
+	<div id="header_wrap" class="outer" style="text-align:center;">
 		<header class="inner">
-			<h2><font color="#ffffff">AI作曲家のメロディー聴き比べ（第1シーズン 第1世代）</font></h2>
+			<h3><font color="#ffffff">AI作曲家のメロディー聴き比べ　第1シーズン 第1世代</font></h3>
 		</header>
 	</div>
 
@@ -169,18 +182,19 @@
 				<input id="radioQHarmonyEducation2" class="radioQuestion" name="harmonyEducation" type="radio" value="1"/>
 				<label id="labelQHarmonyEducation2" class="labelQuestion" for="radioQHarmonyEducation2">ある</label>
 
+				<div style="height:20px;"></div>
+
 			</div>
 
 
 		</div>
 
+		<div style="height:30px;"></div>
+
+		<input id="sendButton" type="button" name="sendButton" value="聴き比べに進む" disabled/>
+		<label id="labelSendButton" for="sendButton">聴き比べに進む</label>
+
 		<div style="height:20px;"></div>
-
-<!-- 		<input id="sendButton" type="button" value="結果を送る" style="width:250px; height:50px;" disabled/> -->
-		<input id="sendButton" type="button" value="聴き比べに進む" style="width:250px; height:50px;" disabled/>
-
-
-		<div style="height:10px;"></div>
 
 		<div id="exit_sentence"></div>
 
