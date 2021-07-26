@@ -44,8 +44,8 @@ document.getElementById('sendButton').addEventListener('click', function(event){
 		document.getElementById("sendButton").value="次の聴き比べに進む";
 		document.getElementById("labelSendButton").innerHTML="次の聴き比べに進む";
 
-		document.getElementById("faceA").src="F_13.png";
-		document.getElementById("faceB").src="M_207.png";
+		document.getElementById("faceA").src="1.png";
+		document.getElementById("faceB").src="2.png";
 
 		document.getElementById("label1").innerHTML="田中しおん";
 		document.getElementById("label2").innerHTML="横道かおる";
