@@ -10,6 +10,10 @@ var varHarmonyEducation="-1";
 var status = "inquiry";
 //inquiry or selecting or selected
 
+xhr = new XMLHttpRequest();
+
+var sentdata = { param1: 'abc', param2: 100 }; 
+
 var seed = Math.floor( Math.random() * 100000 );
 
 document.getElementById("memo").innerHTML=String(seed);
@@ -18,6 +22,19 @@ var curA="";//Z1A
 var curB="";//Z1B
 
 document.getElementById('sendButton').addEventListener('click', function(event){
+
+//	xhr.open('POST', 'http://{送信先URL}/post.php');
+//	xhr.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
+	xhr.open('POST', 'https://creevo-art.com/experiment/');
+	xhr.setRequestHeader( 'Content-Type', 'application/json' );
+	var data = {"param1":"abc","param2":100,};
+//	xhr.send( data );
+//	xhr.send( JSON.stringify({ "email": "hello" }) );
+	xhr.send( JSON.stringify(data) );
+
+//	xhr.send( EncodeHTMLForm( sentdata ) );
+//	xhr.send( 'hoge=piyo&moge=fuga' );
+//	xhr.abort();
 
 	if(status=="inquiry"){
 //		console.log(varAge,varListenTime,varMusicActivity,varHarmonyEducation);
@@ -153,6 +170,36 @@ function AnsweredQuestion(){
 		document.getElementById("sendButton").disabled=false;
 	}//endif
 }//end AnsweredQuestion
+
+
+xhr.onreadystatechange = function() {
+	var READYSTATE_COMPLETED = 4;
+	var HTTP_STATUS_OK = 200;
+	if( this.readyState == READYSTATE_COMPLETED && this.status == HTTP_STATUS_OK ){
+		// レスポンスの表示
+		alert( this.responseText );
+	}//endif
+}
+
+// HTMLフォームの形式にデータを変換する
+function EncodeHTMLForm( data ) {
+	var params = [];
+	for( var name in data ){
+		var value = data[ name ];
+		var param = encodeURIComponent( name ) + '=' + encodeURIComponent( value );
+		params.push( param );
+	}
+	return params.join( '&' ).replace( /%20/g, '+' );
+}
+
+
+
+
+
+
+
+
+
 
 
 
