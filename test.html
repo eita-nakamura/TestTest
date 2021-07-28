@@ -70,6 +70,25 @@
 			background-color: #ff9372;
 		}
 
+		.box-clickable {
+			cursor : pointer;
+		}
+		.box-notclickable {
+			cursor : default;
+		}
+
+
+		.rating{
+			color: #D2D2D2;
+			font-size: 18px;
+			cursor: pointer;
+		}
+		
+		.star-color{
+			color: #F8C601;
+		}
+
+
 	</style>
 
 </head>
@@ -96,27 +115,69 @@
 
 		<div class="container" style="margin-left:auto; margin-right:auto; width:100%; text-align:center; padding: 0px 0px;">
 
-			<div id="boxA" class="radiobox" style="width:40%; background-color:#eeeeee; text-align:center; justify-content: center;" hidden>
-				<h3>A</h3>
-				<img id="faceA" src="Mugao.png" height="160" alt="Picture" style="background-color:#eeeeee;"/>
-				<div></div>
-				<div><audio id="Audio1A" controls preload="metadata" src="">エラー</audio><br></div>
-				<div style="height:50px;"></div>
-				<input id="radio1" class="radiobutton" name="selector" type="radio" value="A"/>
-				<label id="label1" for="radio1">Aの方が良い</label>
+			<div id="boxAContainer" style="width:40%; text-align:center; justify-content: center;" hidden>
+				<div id="boxA" class="radiobox box-clickable" style="width:100%; background-color:#eeeeee; text-align:center; justify-content: center;">
+					<h2>A</h2>
+					<img id="faceA" src="Mugao.png" height="160" alt="Picture" style="background-color:#eeeeee;"/>
+					<div></div>
+					<div><audio id="Audio1A" controls preload="metadata" src="">エラー</audio><br></div>
+					<div style="height:50px;"></div>
+					<input id="radio1" class="radiobutton" name="selector" type="radio" value="A"/>
+					<label id="label1" for="radio1">Aの方が良い</label>
+					<div style="height:20px;"></div>
+				</div>
+				<div style="height:20px;"></div>
+				<div>
+					<div class="rating" style="">
+						<span>
+							<i class="starA star-nocolor" id="starA01">★</i>
+							<i class="starA star-nocolor" id="starA02">★</i>
+							<i class="starA star-nocolor" id="starA03">★</i>
+							<i class="starA star-nocolor" id="starA04">★</i>
+							<i class="starA star-nocolor" id="starA05">★</i>
+							<i class="starA star-nocolor" id="starA06">★</i>
+							<i class="starA star-nocolor" id="starA07">★</i>
+							<i class="starA star-nocolor" id="starA08">★</i>
+							<i class="starA star-nocolor" id="starA09">★</i>
+							<i class="starA star-nocolor" id="starA10">★</i>
+						</span>
+					</div>
+					<div id="popup_descriptionA">曲を評価（任意）</div>
+				</div>
 				<div style="height:20px;"></div>
 			</div>
 
 			<div id="boxSpacer" style="width:5%;" hidden></div>
 
-			<div id="boxB" class="radiobox" style="width:40%; background-color:#eeeeee; text-align:center; justify-content: center;" hidden>
-				<h3>B</h3>
-				<img id="faceB" src="Mugao.png" height="160" alt="Picture" style="background-color:#eeeeee;"/>
-				<div></div>
-				<div><audio id="Audio1B" controls preload="metadata" src="">エラー</audio><br></div>
-				<div style="height:50px;"></div>
-				<input id="radio2" class="radiobutton" name="selector" type="radio" value="B"/>
-				<label id="label2" for="radio2">Bの方が良い</label>
+			<div id="boxBContainer" style="width:40%; text-align:center; justify-content: center;" hidden>
+				<div id="boxB" class="radiobox box-clickable" style="width:100%; background-color:#eeeeee; text-align:center; justify-content: center;">
+					<h2>B</h2>
+					<img id="faceB" src="Mugao.png" height="160" alt="Picture" style="background-color:#eeeeee;"/>
+					<div></div>
+					<div><audio id="Audio1B" controls preload="metadata" src="">エラー</audio><br></div>
+					<div style="height:50px;"></div>
+					<input id="radio2" class="radiobutton" name="selector" type="radio" value="B"/>
+					<label id="label2" for="radio2">Bの方が良い</label>
+					<div style="height:20px;"></div>
+				</div>
+				<div style="height:20px;"></div>
+				<div>
+					<div class="rating" style="">
+						<span>
+							<i class="starB star-nocolor" id="starB01">★</i>
+							<i class="starB star-nocolor" id="starB02">★</i>
+							<i class="starB star-nocolor" id="starB03">★</i>
+							<i class="starB star-nocolor" id="starB04">★</i>
+							<i class="starB star-nocolor" id="starB05">★</i>
+							<i class="starB star-nocolor" id="starB06">★</i>
+							<i class="starB star-nocolor" id="starB07">★</i>
+							<i class="starB star-nocolor" id="starB08">★</i>
+							<i class="starB star-nocolor" id="starB09">★</i>
+							<i class="starB star-nocolor" id="starB10">★</i>
+						</span>
+					</div>
+					<div id="popup_descriptionB">曲を評価（任意）</div>
+				</div>
 				<div style="height:20px;"></div>
 			</div>
 
@@ -138,8 +199,8 @@
 				<input id="radioQAge6" class="radioQuestion" name="age" type="radio" value="50"/>
 				<label id="labelQAge6" class="labelQuestion" for="radioQAge6">50代</label>
 				<input id="radioQAge7" class="radioQuestion" name="age" type="radio" value="60"/>
-				<div style="height:25px;"></div>
 				<label id="labelQAge7" class="labelQuestion" for="radioQAge7">60代</label>
+				<div style="height:25px;"></div>
 				<input id="radioQAge8" class="radioQuestion" name="age" type="radio" value="70"/>
 				<label id="labelQAge8" class="labelQuestion" for="radioQAge8">70代</label>
 				<input id="radioQAge9" class="radioQuestion" name="age" type="radio" value="80"/>

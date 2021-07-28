@@ -8,6 +8,13 @@ var varListenTime="-1";
 var varMusicActivity="-1";
 var varHarmonyEducation="-1";
 
+var descriptions=["曲を評価（任意）","ひどすぎる","とても悪い","悪い","少し悪い","まずまず","少し良い","良い","とても良い","素晴らしい","芸術的"];
+
+var curRatingA=0;
+var curDesriptionA=descriptions[0];
+var curRatingB=0;
+var curDesriptionB=descriptions[0];
+
 var status = "inquiry";
 //inquiry or selecting or selected
 
@@ -36,7 +43,7 @@ document.getElementById('sendButton').addEventListener('click', function(event){
 
 		xhr.open('POST', 'https://creevo-art.com/experiment/');
 		xhr.setRequestHeader( 'Content-Type', 'application/json' );
-		var data = {"expID":expID, "userXID":userXID, "varAge":varAge, "varListenTime":varListenTime, "varMusicActivity":varMusicActivity, "varHarmonyEducation":varHarmonyEducation, "curA":curA, "curB":curB, "chosenAB":chosenAB, };
+		var data = {"expID":expID, "userXID":userXID, "varAge":varAge, "varListenTime":varListenTime, "varMusicActivity":varMusicActivity, "varHarmonyEducation":varHarmonyEducation, "curA":curA, "curB":curB, "chosenAB":chosenAB, "curRatingA":curRatingA, "curRatingB":curRatingB, };
 		xhr.send( JSON.stringify(data) );
 
 		status="selected";
@@ -51,7 +58,13 @@ document.getElementById('sendButton').addEventListener('click', function(event){
 		document.getElementById("label2").innerHTML="横道かおる";
 		document.getElementById("exit_sentence").innerHTML="<a href=\"https://eita-nakamura.github.io/TestTest/thankyou.html\">今日の聴き比べはここまでにする</a>";
 
+		$('#boxA').removeClass("box-clickable").addClass("box-noclickable");
+		$('#boxB').removeClass("box-clickable").addClass("box-noclickable");
+
 	}else if(status=="selected"){
+
+		$('#boxA').removeClass("box-notclickable").addClass("box-clickable");
+		$('#boxB').removeClass("box-notclickable").addClass("box-clickable");
 
 		status="selecting";
 		SetupTest();
@@ -98,9 +111,9 @@ function ClickedB(){
 }//end ClickedB
 
 function SetupTest(){
-	document.getElementById("boxA").hidden = false;
+	document.getElementById("boxAContainer").hidden = false;
 	document.getElementById("boxSpacer").hidden = false;
-	document.getElementById("boxB").hidden = false;
+	document.getElementById("boxBContainer").hidden = false;
 
 	document.getElementById("main_sentence").innerHTML="AとBのメロディーを聴いて、良いと思う方を選んでください";
 	document.getElementById("sendButton").value="結果を送る";
@@ -165,7 +178,74 @@ function AnsweredQuestion(){
 }//end AnsweredQuestion
 
 
+$('.starA').on('mouseover', function(){
+	if(status=="selecting"){
+		var $this = $(this);
+		$this.nextAll().removeClass('star-color').addClass( "star-nocolor" );
+		$this.prevAll().removeClass( "star-nocolor" ).addClass('star-color');
+		$this.removeClass( "star-nocolor" ).addClass('star-color');
+		let tmpRating=parseInt($this.attr('id').slice(-2));
+		document.getElementById("popup_descriptionA").innerHTML=descriptions[tmpRating];
+	}//endif
+});
+$('.starA').on('mouseleave', function(){
+	if(status=="selecting"){
+		var select = $('.selected');
+		if(select.attr('id') == undefined){
+			var $this = $(this);
+			$this.removeClass('star-color').addClass( "star-nocolor" );
+			$this.siblings().removeClass('star-color').addClass( "star-nocolor" );
+		}else{
+			select.nextAll().removeClass('star-color').addClass( "star-nocolor" );
+			select.prevAll().removeClass( "star-nocolor" ).addClass('star-color');
+			select.removeClass( "star-nocolor" ).addClass('star-color');
+		}//endif
+		document.getElementById("popup_descriptionA").innerHTML=curDesriptionA;
+	}//endif
+});
+$('.starA').one('click',function(){
+	if(status=="selecting"){
+		var $this = $(this);
+		$this.addClass('selected').siblings().removeClass('selected');
+		curRatingA=parseInt($this.attr('id').slice(-2));
+		curDesriptionA=descriptions[curRatingA];
+		document.getElementById("popup_descriptionA").innerHTML=curDesriptionA;
+	}//endif
+});
 
-
+$('.starB').on('mouseover', function(){
+	if(status=="selecting"){
+		var $this = $(this);
+		$this.nextAll().removeClass('star-color').addClass( "star-nocolor" );
+		$this.prevAll().removeClass( "star-nocolor" ).addClass('star-color');
+		$this.removeClass( "star-nocolor" ).addClass('star-color');
+		let tmpRating=parseInt($this.attr('id').slice(-2));
+		document.getElementById("popup_descriptionB").innerHTML=descriptions[tmpRating];
+	}//endif
+});
+$('.starB').on('mouseleave', function(){
+	if(status=="selecting"){
+		var select = $('.selected');
+		if(select.attr('id') == undefined){
+			var $this = $(this);
+			$this.removeClass('star-color').addClass( "star-nocolor" );
+			$this.siblings().removeClass('star-color').addClass( "star-nocolor" );
+		}else{
+			select.nextAll().removeClass('star-color').addClass( "star-nocolor" );
+			select.prevAll().removeClass( "star-nocolor" ).addClass('star-color');
+			select.removeClass( "star-nocolor" ).addClass('star-color');
+		}//endif
+		document.getElementById("popup_descriptionB").innerHTML=curDesriptionB;
+	}//endif
+});
+$('.starB').one('click',function(){
+	if(status=="selecting"){
+		var $this = $(this);
+		$this.addClass('selected').siblings().removeClass('selected');
+		curRatingB=parseInt($this.attr('id').slice(-2));
+		curDesriptionB=descriptions[curRatingB];
+		document.getElementById("popup_descriptionB").innerHTML=curDesriptionB;
+	}//endif
+});
 
 
