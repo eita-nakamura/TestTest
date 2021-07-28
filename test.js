@@ -60,11 +60,20 @@ document.getElementById('sendButton').addEventListener('click', function(event){
 
 		$('#boxA').removeClass("box-clickable").addClass("box-noclickable");
 		$('#boxB').removeClass("box-clickable").addClass("box-noclickable");
+		$('#ratingBoxA').removeClass("box-clickable").addClass("box-noclickable");
+		$('#ratingBoxB').removeClass("box-clickable").addClass("box-noclickable");
+		$('#label1').removeClass("box-clickable").addClass("box-noclickable");
+		$('#label2').removeClass("box-clickable").addClass("box-noclickable");
 
 	}else if(status=="selected"){
 
 		$('#boxA').removeClass("box-notclickable").addClass("box-clickable");
 		$('#boxB').removeClass("box-notclickable").addClass("box-clickable");
+		$('#ratingBoxA').removeClass("box-notclickable").addClass("box-clickable");
+		$('#ratingBoxB').removeClass("box-notclickable").addClass("box-clickable");
+		$('#label1').removeClass("box-notclickable").addClass("box-clickable");
+		$('#label2').removeClass("box-notclickable").addClass("box-clickable");
+
 
 		status="selecting";
 		SetupTest();
@@ -139,8 +148,23 @@ function SetupTest(){
 
 	document.getElementById("Audio1A").src='https://eita-nakamura.github.io/Test2/Data/mp3/'+curA+'.mp3';
 	document.getElementById("Audio1B").src='https://eita-nakamura.github.io/Test2/Data/mp3/'+curB+'.mp3';
+
+	ClearRating();
+
 }//end SetupTest
 
+function ClearRating(){
+	curRatingA=0;
+	curDesriptionA=descriptions[0];
+	curRatingB=0;
+	curDesriptionB=descriptions[0];
+	$('.starA').siblings().removeClass('star-color').addClass( "star-nocolor" );
+	$('.starA').siblings().removeClass('selected');
+	$('.starB').siblings().removeClass('star-color').addClass( "star-nocolor" );
+	$('.starB').siblings().removeClass('selected');
+	document.getElementById("popup_descriptionA").innerHTML=curDesriptionA;
+	document.getElementById("popup_descriptionB").innerHTML=curDesriptionB;
+}//end ClearRating
 
 
 document.getElementsByName('age').forEach(function(e) {
